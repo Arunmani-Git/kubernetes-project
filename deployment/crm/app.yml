@@ -19,7 +19,7 @@ spec:
           args: ["-c", "/etc/supervisord.conf"]
           env:
             - name: STATIC_ENDPOINT
-              value: http://app-static.crm.sloopstash.${ENVIRONMENT}:${CRM_NGINX_PORT}
+              value: app-static.crm.sloopstash.${ENVIRONMENT}:${CRM_NGINX_PORT}
           volumeMounts:
             - name: app-source
               mountPath: /opt/app/source
@@ -46,7 +46,7 @@ spec:
       volumes:
         - name: app-source
           hostPath:
-            path: ${CRM_APP_SOURCE}
+            path: /opt/sloopstash-crm-app
             type: Directory
         - name: app-log
           persistentVolumeClaim:
